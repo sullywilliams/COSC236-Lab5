@@ -20,22 +20,42 @@ public class Member {
 	public ArrayList<Book> getBorrowedBooks() { 
 		return borrowedBooks;
 	}
+	
+	public void addBorrowedBook(Book book) {
+        borrowedBooks.add(book);
+    }
+	
+	public void removeBorrowedBook(Book book) {
+        borrowedBooks.remove(book);
+    }
+	
 	public void setName(String name) {
 		this.name = name;
 	}
 	public String toString() {
 		return "Member: " + name;
 	}
+	
 	public void borrowBook(Book book) {
-		if (book != null && book.getIsAvailable() == true) {
-			borrowedBooks.add(book);
-			book.setIsAvailable(false);
+		BorrowingService borrowingService = new BorrowingService();
+		boolean success = borrowingService.borrowBook(this, book); 
+		if(success)
+		{
+		// print something
+		} else {
+		// print something else
 		}
+		
 	}
 	public void returnBook(Book book) {
-		if (book != null) {
-			borrowedBooks.remove(book);
-			book.setIsAvailable(true);
+		
+		BorrowingService borrowingService = new BorrowingService();
+		boolean success = borrowingService.returnBook(this, book); 
+		if(success)
+		{
+		// print something
+		} else {
+		// print something else
 		}
 	}
 	public void listBorrowedBooks() {
