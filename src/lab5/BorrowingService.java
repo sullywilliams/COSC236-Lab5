@@ -5,7 +5,7 @@ public class BorrowingService implements BorrowingServiceAPI{
 	@Override
 	public boolean borrowBook(Member member, Book book) {
 		// TODO Auto-generated method stub
-		//borrow book using this service
+		//borrow book using this borrowing service
 		if (book != null && book.getIsAvailable() == true) {
 			member.addBorrowedBook(book);
 			book.setIsAvailable(false);
