@@ -4,11 +4,18 @@ public class LibrarianController {
 	
 	private Library library; // Library dependency
 	private BorrowingService borrowingService; // Singleton
+	AudioBookCreator audioBook;
+	EBookCreator ebook;
+	PaperBookCreator paperBook;
 	
 	public LibrarianController() {
 	// The LibraranController holds
 	// the single instance of BorrowingService
 	this.borrowingService = BorrowingService.getInstance();
+	this.library = new Library(); // Constructor injection
+	this.audioBook = new AudioBookCreator(library);
+	this.ebook = new EBookCreator(library);
+	this.paperBook = new PaperBookCreator(library);
 	} 
 	
 	public Library getLibrary() {
