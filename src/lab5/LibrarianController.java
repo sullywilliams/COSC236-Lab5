@@ -3,16 +3,6 @@ package lab5;
 public class LibrarianController {
 	
 	Library library; // Library dependency
-	AudioBookCreator audioBook;
-	EBookCreator ebook;
-	PaperBookCreator paperBook;
-	
-	public LibrarianController( ) {
-		this.library = new Library(); // Constructor injection
-		this.audioBook = new AudioBookCreator(library);
-		this.ebook = new EBookCreator(library);
-		this.paperBook = new PaperBookCreator(library);
-		
 	}
 	public Library getLibrary() {
 		return this.library;
@@ -33,7 +23,7 @@ public class LibrarianController {
 		library.addBook(this.audioBook.createBook(title));
 	}
 	public void addMember(String name) {
-		library.addMember(new Member(name)); // Member class constructor dependency
+		library.addMember(new Member(name, borrowingService)); // Member class constructor dependency
 	}
 	public void removeBook(String title) {
 		library.removeBook(title); // remove 
