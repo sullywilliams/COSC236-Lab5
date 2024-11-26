@@ -2,6 +2,25 @@ package lab5;
 
 
 public class BorrowingService implements BorrowingServiceAPI{
+	
+	private static volatile BorrowingService INSTANCE; // private member
+	private int borrowingLimit; // to restrict the count of borrowed books
+	
+	private BorrowingService() { // private constructor
+		borrowingLimit = 3;
+	}
+	
+	public static BorrowingService getInstance() {
+		if(INSTANCE == null) {
+			synchronized(BorrowingService.class) {
+				if(INSTANCE == null) {
+					INSTANCE = new BorrowingService();
+				}
+			}
+		}
+		return INSTANCE;
+	}
+
 
 	@Override
 	public boolean borrowBook(Member member, Book book) {

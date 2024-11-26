@@ -2,7 +2,14 @@ package lab5;
 
 public class LibrarianController {
 	
-	Library library; // Library dependency
+	private Library library; // Library dependency
+	private BorrowingService borrowingService; // Singleton
+	
+	public LibrarianController() {
+	// The LibraranController holds
+	// the single instance of BorrowingService
+	this.borrowingService = BorrowingService.getInstance();
+	} 
 	
 	public Library getLibrary() {
 		return this.library;
