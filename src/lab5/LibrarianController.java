@@ -3,7 +3,7 @@ package lab5;
 public class LibrarianController {
 	
 	Library library; // Library dependency
-	}
+	
 	public Library getLibrary() {
 		return this.library;
 	}
