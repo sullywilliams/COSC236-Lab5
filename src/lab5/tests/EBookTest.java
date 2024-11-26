@@ -1,21 +1,26 @@
 package lab5.tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import lab5.Book;
 import lab5.EBook;
+import lab5.EBookCreator;
+import lab5.Library;
+import lab5.AudioBookCreator;
 
 class EBookTest {
 
 	@Test
-	void EBookTest() {
-		Book book = new EBook("Title");
-		assertEquals(book.getIsAvailable(), true);
-		assertEquals(book.getClass().getName(), "lab5.EBook");
-		assertTrue(book instanceof lab5.Book);
-		assertEquals(book.getTitle(), "Title");
+	void differentBooksTypes() {
+		Library library = new Library();
+		
+		EBookCreator ebook = new EBookCreator(library);
+		AudioBookCreator audioBook = new AudioBookCreator(library);
+		
+		assertEquals(ebook, audioBook, false); 
+		
+		
+		
 	}
 
 }
