@@ -9,12 +9,15 @@ import lab5.Member;
 import lab5.PaperBook;
 import lab5.AudioBook;
 import lab5.Book;
+import lab5.BorrowingService;
 import lab5.EBook;
 
 class TestBorrowBooks {
 
 	Member member1;
 	Member member2;
+	
+	private BorrowingService borrowingService; 
 	
 	Book book1 = new PaperBook("Dune");
 	Book book2 = new PaperBook("1984");
@@ -25,8 +28,9 @@ class TestBorrowBooks {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		member1 = new Member("Alice"); // flush borrowedBook array 
-		member2 = new Member("Bob");   // flush borrowedBook array 
+		this.borrowingService = BorrowingService.getInstance();
+		member1 = new Member("Alice", borrowingService); // flush borrowedBook array 
+		member2 = new Member("Bob", borrowingService);   // flush borrowedBook array 
 		book1.setIsAvailable(true);
 		book2.setIsAvailable(true);
 	}

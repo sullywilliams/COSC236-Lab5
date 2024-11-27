@@ -10,6 +10,7 @@ import lab5.PaperBook;
 import lab5.Member;
 import lab5.AudioBook;
 import lab5.Book;
+import lab5.BorrowingService;
 import lab5.EBook;
 
 
@@ -17,10 +18,12 @@ import lab5.EBook;
 class TestAddRemoveBooks {
 	
 	private Library library;
+	private BorrowingService borrowingService; 
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		 this.library = new Library(); // empty library for each test
+		 this.borrowingService = BorrowingService.getInstance();
 	}
 
 	Book book1 = new PaperBook("Dune");
@@ -35,7 +38,7 @@ class TestAddRemoveBooks {
 	Book book8 = new AudioBook("The Outsiders");
 	Book book9 = new AudioBook("Animal Farm");
 	
-	Member member = new Member("Grady Booch");
+	Member member = new Member("Grady Booch", borrowingService);
 	
 	@Test
 	void AddBooks() {
