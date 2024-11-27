@@ -1,7 +1,7 @@
 package lab5;
 
 public enum BorrowingService implements BorrowingServiceAPI{
-	
+
 	private static volatile BorrowingService INSTANCE; // private member
 	private int borrowingLimit; // to restrict the count of borrowed books
 	
@@ -19,7 +19,7 @@ public enum BorrowingService implements BorrowingServiceAPI{
 		}
 		return INSTANCE;
 	}
-	
+
 	@Override
 	public boolean borrowBook(Member member, Book book) {
 		// TODO Auto-generated method stub
@@ -42,5 +42,5 @@ public enum BorrowingService implements BorrowingServiceAPI{
 		}
 		return false;
 
-	}
+}
 }

@@ -5,20 +5,23 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import lab5.PaperBook;
+import lab5.BorrowingService;
 import lab5.Member;
 
 class TestNotAvailableBook {
 
 	Member member1;
 	Member member2;
+	private BorrowingService borrowingService; 
 	
 	PaperBook book1 = new PaperBook("Dune");
 	PaperBook book2 = new PaperBook("1984");
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		member1 = new Member("Alice"); // flush borrowedBook array 
-		member2 = new Member("Bob");   // flush borrowedBook array 
+		this.borrowingService = BorrowingService.getInstance();
+		member1 = new Member("Alice", borrowingService); // flush borrowedBook array 
+		member2 = new Member("Bob", borrowingService);   // flush borrowedBook array 
 		book1.setIsAvailable(true);
 		book2.setIsAvailable(true);
 	}
